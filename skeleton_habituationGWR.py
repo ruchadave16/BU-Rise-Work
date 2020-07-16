@@ -18,7 +18,7 @@ import matplotlib.pyplot as plt
 #        the weight of the connection from input to output
 stv = 4
 
-dec=0.7 # set weight decrement for habituation
+dec=0.2 # set weight decrement for habituation
 
 pls=[0, 0, 1, 0, 0] # set up a pulse
 
@@ -45,12 +45,11 @@ y = np.zeros((1, nTs))
 #        through each time step in 
 #        the input series and calculate
 #        the output at each time step. Ex:
-i = 0
-for a in y:
-    y[0, i] = v * x[i]
-    if x[i] > 0: #some stimulation
+
+for t in range(nTs):
+    y[0, t] = v * x[t]
+    if x[t] > 0: #some stimulation
         v *= dec
-    i += 1
 
 #     then indent 4 spaces and write the equation that
 #     describes how each input value in the vector x is 
